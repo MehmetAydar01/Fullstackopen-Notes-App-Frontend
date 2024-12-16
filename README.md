@@ -1,3 +1,3 @@
-# Fullstack Open
+# Fullstackopen
 
 ## Notes App - Frontend Project
