@@ -18,6 +18,7 @@ const App = () => {
   const [loginVisible, setLoginVisible] = useState(false)
 
   const noteFormRef = useRef()
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
     if (loggedUserJSON) {
@@ -105,6 +106,12 @@ const App = () => {
     )
   }
 
+  const noteForm = () => (
+    <Togglable buttonLabel='new note' ref={noteFormRef}>
+      <NoteForm createNote={addNote} />
+    </Togglable>
+  )
+
   return (
     <div>
       <h1>Notes</h1>
@@ -114,9 +121,7 @@ const App = () => {
       {user && (
         <div>
           <p>{user.name} logged in</p>
-          <Togglable buttonLabel='new note' ref={noteFormRef}>
-            <NoteForm createNote={addNote} />
-          </Togglable>
+          {noteForm()}
         </div>
       )}
 
